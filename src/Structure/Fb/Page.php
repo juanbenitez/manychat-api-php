@@ -245,6 +245,7 @@ class Page extends NamedAPIStructure
      * @param string $name Bot field name
      * @param string $type Bot field type
      * @param string $description Description of the bot field
+     * @param string|int|null $value Bot field value
      *
      * @return array The resulting array that was received from ManyChat API
      * @throws CallMethodNotSucceedException If the result of calling method didn't succeed
@@ -252,12 +253,13 @@ class Page extends NamedAPIStructure
      * of /fb/page/createBotField method at manychat.com.
      *
      */
-    public function createBotField(string $name, string $type, string $description): array
+    public function createBotField(string $name, string $type, string $description, $value = ''): array
     {
         $arguments = [
             'name' => $name,
             'type' => $type,
             'description' => $description,
+            'value' => $value,
         ];
         $methodName = $this->getMethodAddress(__FUNCTION__);
 
